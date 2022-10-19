@@ -1,3 +1,6 @@
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 public class LinearEquation {
     /* Instance Variables */
     private int x1;
@@ -19,19 +22,26 @@ public class LinearEquation {
 
 /* Calculates and returns distance between (x1, y1) and (x2, y2), rounded to
    the nearest hundredth */
-    public double distance()
+    public double distance() {
+        return Math.round(Math.sqrt((Math.pow(x2 - x1, 2)) + (Math.pow(y2 - y1, 2))) * 100.0) / 100.0;
+    }
 
 
 
     /* Calculates and returns the y-intercept of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
-    public double yIntercept()
+    public double yIntercept() {
+        return Math.round((y1 - slope() * x1) * 100.0) / 100.0;
+    }
 
 
 
     /* Calculates and returns the slope of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
-    public double slope()
+    public double slope() {
+        System.out.println(Math.round(((y2 - y1) / (x2 - x1)) * 100.0) / 100.0);
+        return Math.round(((y2 - y1) / (x2 - x1)) * 100.0) / 100.0;
+    }
 
 
 
@@ -59,7 +69,32 @@ public class LinearEquation {
         HINT: Absolute value might be helpful for printing negative y-intercepts as
                subtraction!
      */
-    public String equation()
+    public String equation() {
+        String slopeString = "";
+        String interceptString = "";
+        if (y1 == y2) {
+            return "y = " + y1;
+        }
+        else {
+            if ((x2 - x1) < 0 && (y2 - y1) < 0) {
+                slopeString += Math.abs((y2 - y1)) + "/" + Math.abs((x2 - x1));
+            }
+            else if ((x2 - x1) < 0 && (y2 - y1) > 0) {
+                slopeString += "-" + (y2 - y1) + "/" + Math.abs((x2 - x1));
+            }
+            else {
+                slopeString += (y2 - y1) + "/" + (x2 - x1);
+            }
+            if (yIntercept() < 0) {
+                interceptString += "- " + Math.abs(yIntercept());
+            }
+            else {
+                interceptString += "+ " + yIntercept();
+            }
+            return "y = " + slopeString + "x " + interceptString;
+
+        }
+    }
 
 
 
@@ -67,7 +102,7 @@ public class LinearEquation {
 
     /* Returns a String of the coordinate point on the line that has the given x value, with
        both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
-    public String coordinateForX(double xValue)
+    //public String coordinateForX(double xValue)
 
 
 
@@ -78,7 +113,7 @@ public class LinearEquation {
 
         HINT:  the Math.round method can help with this!
      */
-    public double roundedToHundredth(double toRound)
+    //public double roundedToHundredth(double toRound)
 
 
 
@@ -94,6 +129,6 @@ public class LinearEquation {
       equation(), slope(), yIntercept(), distance().
 
       */
-    public String lineInfo()
+    //public String lineInfo()
 
 }

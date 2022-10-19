@@ -14,10 +14,13 @@ public class LinearEquationRunner {
         int cord2x = Integer.parseInt(cord2String.substring(1, cord2String.indexOf(",")));
         int cord2y = Integer.parseInt(cord2String.substring(cord2String.indexOf(" ") + 1, cord2String.indexOf(")")));
 
-        System.out.println(cord1x);
-        System.out.println(cord1y);
-        System.out.println(cord2x);
-        System.out.println(cord2y);
-
+        if (cord1x == cord2x) {
+            System.out.println("These coordinates result in a vertical line: x = " + cord1x);
+            System.exit(0);
+        }
+        else {
+            LinearEquation equation = new LinearEquation(cord1x, cord1y, cord2x, cord2y);
+            System.out.println(equation.equation());
+        }
     }
 }

@@ -20,7 +20,7 @@ public class LinearEquationRunner {
         }
         else {
             LinearEquation equation = new LinearEquation(cord1x, cord1y, cord2x, cord2y);
-            System.out.println(equation.equation());
+            System.out.println(equation.lineInfo());
         }
     }
 }

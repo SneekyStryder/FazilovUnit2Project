@@ -39,8 +39,7 @@ public class LinearEquation {
     /* Calculates and returns the slope of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double slope() {
-        System.out.println(Math.round(((y2 - y1) / (x2 - x1)) * 100.0) / 100.0);
-        return Math.round(((y2 - y1) / (x2 - x1)) * 100.0) / 100.0;
+        return Math.round(((double) (y2 - y1) / (double) (x2 - x1)) * 100.0) / 100.0;
     }
 
 
@@ -129,6 +128,12 @@ public class LinearEquation {
       equation(), slope(), yIntercept(), distance().
 
       */
-    //public String lineInfo()
+    public String lineInfo() {
+        return  "The two points are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")" + "\n" +
+                "The equation of the line between these points is: " + equation() + "\n" +
+                "The slope of this line is: " + slope() + "\n" +
+                "The y-intercept of the line is: " + yIntercept() + "\n" +
+                "The distance between the two points is: " + distance();
+    }
 
 }

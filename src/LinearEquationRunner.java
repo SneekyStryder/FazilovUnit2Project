@@ -20,7 +20,13 @@ public class LinearEquationRunner {
         }
         else {
             LinearEquation equation = new LinearEquation(cord1x, cord1y, cord2x, cord2y);
+            System.out.println();
             System.out.println(equation.lineInfo());
+            System.out.println();
+            System.out.print("Enter a value for x: ");
+            double userX = scan.nextDouble();
+            System.out.println();
+            System.out.println("The point on the line is " + equation.coordinateForX(userX));
         }
     }
 }

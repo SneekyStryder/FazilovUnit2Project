@@ -75,16 +75,40 @@ public class LinearEquation {
             return "y = " + y1;
         }
         else {
-            if ((x2 - x1) < 0 && (y2 - y1) < 0) {
-                slopeString += Math.abs((y2 - y1)) + "/" + Math.abs((x2 - x1));
+            if (slope() == 1.0) {
+                slopeString += "";
+            }
+            else if (slope() == -1.0) {
+                slopeString += "-";
+            }
+            else if ((x2 - x1) < 0 && (y2 - y1) < 0) {
+                if ((int) Math.abs(slope() * 10) % 10 == 0) {
+                    slopeString += (int) Math.abs(slope());
+                }
+                else {
+                    slopeString += Math.abs((y2 - y1)) + "/" + Math.abs((x2 - x1));
+                }
             }
             else if ((x2 - x1) < 0 && (y2 - y1) > 0) {
-                slopeString += "-" + (y2 - y1) + "/" + Math.abs((x2 - x1));
+                if ((int) Math.abs(slope() * 10) % 10 == 0) {
+                    slopeString += "-" + (int) Math.abs(slope());
+                }
+                else {
+                    slopeString += "-" + (y2 - y1) + "/" + Math.abs((x2 - x1));
+                }
             }
             else {
-                slopeString += (y2 - y1) + "/" + (x2 - x1);
+                if ((int) Math.abs(slope() * 10) % 10 == 0) {
+                    slopeString += (int) slope();
+                }
+                else {
+                    slopeString += (y2 - y1) + "/" + (x2 - x1);
+                }
             }
-            if (yIntercept() < 0) {
+            if (yIntercept() == 0) {
+                interceptString += "";
+            }
+            else if (yIntercept() < 0) {
                 interceptString += "- " + Math.abs(yIntercept());
             }
             else {
